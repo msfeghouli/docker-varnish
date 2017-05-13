@@ -3,9 +3,11 @@ MAINTAINER Adrian Gschwend <adrian.gschwend@zazuko.com>
 
 RUN apt-get install -y apt-transport-https 
 RUN curl https://repo.varnish-cache.org/GPG-key.txt | apt-key add -
-RUN echo "deb https://repo.varnish-cache.org/ubuntu/ trusty varnish-4.1" >> /etc/apt/sources.list.d/varnish-cache.list
+RUN curl -s https://packagecloud.io/install/repositories/varnishcache/varnish5/script.deb.sh | sudo bash
+#RUN echo "deb https://repo.varnish-cache.org/ubuntu/ trusty varnish-4.1" >> /etc/apt/sources.list.d/varnish-cache.list
 RUN apt-get update && apt-get upgrade -y -o Dpkg::Options::="--force-confold"
-RUN apt-get -y install varnish
+
+RUN apt-get install varnish-dev=5.1.2-1
 
 RUN mkdir /etc/service/varnishd
 ADD run.sh /etc/service/varnishd/run
