@@ -7,7 +7,7 @@ RUN curl -s https://packagecloud.io/install/repositories/varnishcache/varnish5/s
 #RUN echo "deb https://repo.varnish-cache.org/ubuntu/ trusty varnish-4.1" >> /etc/apt/sources.list.d/varnish-cache.list
 RUN apt-get update && apt-get upgrade -y -o Dpkg::Options::="--force-confold"
 
-RUN apt-get install varnish-dev=5.1.2-1
+RUN apt-get install -y varnish-dev=5.1.2-1
 
 RUN mkdir /etc/service/varnishd
 ADD run.sh /etc/service/varnishd/run
